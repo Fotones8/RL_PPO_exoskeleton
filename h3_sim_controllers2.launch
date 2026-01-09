@@ -1,0 +1,13 @@
+<launch>
+    <!--Load controllers developed by Jorge Gomez Aguilar, ETSIT UPM-->
+    <rosparam file="$(find h3_urdf)/config/h3_sim_controllers.yaml" command="load"/>
+    <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+    output="screen" ns="/h3_sim" args="/h3_sim/joint_state_controller 
+    /h3_sim/right_hip_effort_controller
+    /h3_sim/right_knee_effort_controller
+    /h3_sim/right_ankle_effort_controller 
+    /h3_sim/left_hip_effort_controller 
+    /h3_sim/left_knee_effort_controller
+    /h3_sim/left_ankle_effort_controller">
+    </node>
+</launch>
