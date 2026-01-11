@@ -12,4 +12,4 @@ The present files are:
 
 - **rl_node.py**: ROS node implementing the PPO agent to control the Exo-H3 exoskeleton simulator through ROS.
 
-The Exo-H3 simulator code is not available in this github repository, since it is the intelectual propierty of Technaid S.L.
+The Exo-H3 simulator code is not available in this github repository, since it is the intellectual property of Technaid S.L.
