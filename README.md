@@ -11,3 +11,5 @@ The present files are:
 - **h3_sim_controllers2.launch**: torque controllers for the Exo-H3 exoskeleton simulator
 
 - **rl_node.py**: ROS node implementing the PPO agent to control the Exo-H3 exoskeleton simulator through ROS.
+
+The Exo-H3 simulator code is not available in this github repository, since it is the intelectual propierty of Technaid S.L.
