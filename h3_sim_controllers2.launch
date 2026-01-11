@@ -1,5 +1,5 @@
 <launch>
-    <!--Load controllers developed by Jorge Gomez Aguilar, ETSIT UPM-->
+    <!--Load controllers developed by Jorge Gomez Aguilar, Imperial College London, ETSIT UPM-->
     <rosparam file="$(find h3_urdf)/config/h3_sim_controllers.yaml" command="load"/>
     <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
     output="screen" ns="/h3_sim" args="/h3_sim/joint_state_controller 
