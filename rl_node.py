@@ -70,10 +70,7 @@ class ExoSim(gym.Env):
 
     def reset(self, exoState, seed: Optional[int] = None, options: Optional[dict] = None):
         super().reset()
-        # NEEDS UPGRADES
         # Start with a random 3-D vector
-        #self.state = np.random.uniform(-1, 1, size=(3,)).astype(np.float32)
-        #pass
         
         self.state = np.array([float(exoState[0]), float(exoState[1]), float(exoState[2]),
                                float(exoState[3]), float(exoState[4]), float(exoState[5]), 
@@ -83,7 +80,6 @@ class ExoSim(gym.Env):
 
     def step(self, action, exoState):
         self.steps += 1   # increment step count
-        #action = action.astype(np.float32) * (np.pi/16)
         
         # next_state
         self.state = np.array([float(exoState[0]), float(exoState[1]), float(exoState[2]),
@@ -158,7 +154,7 @@ class Node:
         if self.current_frame % self.skip_frames == 0:
             position = data.position
             velocity = data.velocity
-            self.exoState = [position[4],position[5],position[3],velocity[4],velocity[5],velocity[3]] #Unite this stuff in the correct order
+            self.exoState = [position[4],position[5],position[3],velocity[4],velocity[5],velocity[3]] 
             self.flag_ExoStateUpdated = True
         
     def step(self, action):
@@ -267,7 +263,7 @@ class Node:
             value = self.critic(state).item()
 
             #PUBLISH THE ACTIONS AND WAIT FOR THE RESULTS
-            next_obs, reward, terminated, truncated, _ = self.step(action.numpy()) #Should I introduce the position and velocity??
+            next_obs, reward, terminated, truncated, _ = self.step(action.numpy())
             done = terminated or truncated
 
             # We store in the batch all the results from this step
@@ -286,7 +282,7 @@ class Node:
                 print('Episode reward: ', self.ep_reward)
                 self.rewards_array.append(float(self.ep_reward))
                 self.ep_reward = 0
-                self.obs, _ = self.reset() #Probably have to change it to a function in class Node
+                self.obs, _ = self.reset()
         
         # We prepare the batch by turning them into tensors
         states = torch.tensor(states, dtype=torch.float32)
